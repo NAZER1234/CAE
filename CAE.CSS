@@ -1,0 +1,302 @@
+/* --- الإعدادات العامة والخطوط --- */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap'); /* استيراد خط Cairo */
+
+:root {
+    --primary-color: #0056b3; /* أزرق أساسي */
+    --secondary-color: #007bff; /* أزرق أفتح */
+    --light-bg: #f8f9fa; /* خلفية فاتحة جداً */
+    --dark-text: #343a40; /* نص غامق */
+    --light-text: #6c757d; /* نص فاتح */
+    --border-color: #dee2e6; /* لون الحدود */
+    --hover-bg: #eef5ff; /* خلفية عند المرور */
+    --section-bg: #ffffff; /* خلفية الأقسام */
+    --icon-color: #007bff; /* لون الأيقونات */
+    --placeholder-border: #ced4da; /* لون حدود العناصر النائبة */
+}
+
+body {
+    font-family: 'Cairo', sans-serif; /* استخدام خط Cairo */
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.7; /* زيادة تباعد الأسطر */
+    direction: rtl; /* ضمان الاتجاه من اليمين لليسار */
+}
+
+/* --- الحاوية الرئيسية --- */
+.container {
+    max-width: 1100px; /* عرض أكبر قليلاً */
+    margin: 0 auto; /* توسيط أفقي */
+    padding: 0 20px; /* هوامش جانبية */
+}
+
+/* --- الهيدر (العنوان العلوي) --- */
+.site-header {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 25px 0;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 5px solid var(--secondary-color);
+}
+
+.site-header h1 {
+    margin: 0 0 5px 0;
+    font-size: 2.2em; /* حجم أكبر للعنوان */
+}
+
+.site-header h1 .fa-graduation-cap {
+    margin-left: 10px; /* مسافة يسار أيقونة الهيدر */
+}
+
+.site-header .subtitle {
+    margin: 0;
+    font-size: 1.1em;
+    color: #e0e0e0; /* لون أفتح للعنوان الفرعي */
+    font-weight: 400;
+}
+
+/* --- المحتوى الرئيسي --- */
+main.container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* --- قسم البحث --- */
+.search-section {
+    background-color: var(--section-bg);
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.search-section h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 1.5em;
+}
+
+.search-section h2 .fa-search {
+    margin-left: 8px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* لضمان الحجم الصحيح مع padding */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* --- أقسام المحاضرات --- */
+.lecture-category {
+    background-color: var(--section-bg);
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.lecture-category h2 {
+    margin: 0 0 20px 0;
+    color: var(--primary-color);
+    font-size: 1.6em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    cursor: pointer; /* تغيير شكل المؤشر للإشارة للقابلية للضغط */
+    display: flex; /* لترتيب الأيقونة بجانب النص */
+    justify-content: space-between; /* لدفع الأيقونة لليسار */
+    align-items: center; /* محاذاة عمودية */
+    transition: color 0.3s ease;
+}
+
+.lecture-category h2:hover {
+    color: var(--secondary-color); /* تغيير اللون عند المرور */
+}
+
+.lecture-category h2 i {
+    margin-left: 10px; /* مسافة يسار الأيقونة الرئيسية */
+}
+
+.lecture-category h2 .toggle-icon {
+    margin-left: 0; /* إزالة المسافة الافتراضية */
+    transition: transform 0.3s ease; /* إضافة تأثير حركة للأيقونة */
+}
+
+.lecture-category h2.collapsed .toggle-icon {
+    transform: rotate(-90deg); /* تدوير السهم عند الطي */
+}
+
+/* --- قائمة المحاضرات --- */
+.lecture-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 1000px; /* ارتفاع كبير للسماح بالظهور */
+    overflow: hidden; /* إخفاء المحتوى الزائد */
+    transition: max-height 0.5s ease-in-out; /* تأثير الحركة عند الفتح/الطي */
+}
+
+.lecture-list.hidden {
+    max-height: 0; /* إخفاء القائمة عند الطي */
+    /* يمكن إضافة padding-top: 0; margin-top: 0; إذا لزم الأمر */
+}
+
+
+.lecture-list li {
+    margin-bottom: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee; /* حدود خفيفة */
+}
+
+.lecture-list li:hover {
+    background-color: var(--hover-bg);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.lecture-list li a {
+    display: flex; /* استخدام flex لمحاذاة الأيقونة والنص */
+    align-items: center; /* محاذاة عمودية */
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--dark-text); /* لون أغمق للرابط */
+    font-weight: 600; /* وزن أثقل قليلاً */
+    transition: color 0.3s ease;
+}
+
+.lecture-list li a:hover {
+    color: var(--primary-color); /* تغيير لون النص عند المرور */
+}
+
+.lecture-list li a .icon {
+    color: var(--icon-color); /* لون موحد للأيقونات */
+    margin-left: 12px; /* مسافة بين الأيقونة والنص */
+    font-size: 1.1em;
+    width: 20px; /* تحديد عرض للأيقونة لمحاذاة أفضل */
+    text-align: center;
+}
+
+/* --- العناصر النائبة --- */
+.lecture-list li.placeholder {
+    background-color: #fdfdff;
+    border: 1px dashed var(--placeholder-border);
+    color: var(--light-text);
+    font-style: italic;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.lecture-list li.placeholder a {
+    color: var(--light-text);
+    font-weight: 400;
+    justify-content: center; /* توسيط محتوى الرابط النائب */
+}
+
+.lecture-list li.placeholder a:hover {
+    color: var(--dark-text);
+}
+
+
+/* --- التذييل (الجزء السفلي) --- */
+.site-footer {
+    background-color: var(--dark-text); /* خلفية غامقة للتذييل */
+    color: #e0e0e0; /* نص فاتح */
+    padding: 25px 0;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 5px solid #495057;
+}
+
+.site-footer p {
+    margin: 5px 0;
+}
+
+/* --- الاستجابة للشاشات الصغيرة (Responsive Design) --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px; /* تقليل الهوامش الجانبية */
+    }
+
+    .site-header h1 {
+        font-size: 1.8em; /* تصغير حجم العنوان الرئيسي */
+    }
+
+    .site-header .subtitle {
+        font-size: 1em;
+    }
+
+    .search-section h2,
+    .lecture-category h2 {
+        font-size: 1.3em; /* تصغير عناوين الأقسام */
+    }
+
+    .lecture-list li a {
+        padding: 10px 12px; /* تقليل الحشو الداخلي للروابط */
+        font-size: 0.95em;
+    }
+
+    .lecture-list li a .icon {
+        margin-left: 8px; /* تقليل المسافة يسار الأيقونة */
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header h1 {
+        font-size: 1.6em;
+    }
+     .lecture-category h2 {
+        font-size: 1.2em;
+    }
+     #searchInput {
+        font-size: 0.9em;
+    }
+}
+
+/* تعليقات إضافية لزيادة حجم الملف وتوضيح الأقسام */
+/* -------------------------------------------- */
+/* نهاية قسم الإعدادات العامة */
+/* -------------------------------------------- */
+/* نهاية قسم الهيدر */
+/* -------------------------------------------- */
+/* نهاية قسم البحث */
+/* -------------------------------------------- */
+/* بداية تنسيقات أقسام المحاضرات */
+/* يمكن إضافة تنسيقات محددة لكل قسم هنا إذا لزم الأمر */
+/* #written-lectures-section {...} */
+/* #audio-lectures-section {...} */
+/* نهاية تنسيقات أقسام المحاضرات */
+/* -------------------------------------------- */
+/* بداية تنسيقات قائمة المحاضرات */
+/* إضافة المزيد من التفاصيل الدقيقة للتنسيق هنا */
+/* مثل تأثيرات خاصة عند النقر أو التركيز */
+/* نهاية تنسيقات قائمة المحاضرات */
+/* -------------------------------------------- */
+/* بداية تنسيقات العناصر النائبة */
+/* يمكن تخصيص مظهرها بشكل أكبر */
+/* نهاية تنسيقات العناصر النائبة */
+/* -------------------------------------------- */
+/* بداية تنسيقات التذييل */
+/* إضافة تنسيقات للروابط الاجتماعية إذا أضيفت */
+/* .social-links a {...} */
+/* نهاية تنسيقات التذييل */
+/* -------------------------------------------- */
+/* بداية تنسيقات الاستجابة للشاشات (Media Queries) */
+/* يمكن إضافة نقاط توقف إضافية (breakpoints) لأحجام شاشات أخرى */
+/* @media (min-width: 1200px) {...} */
+/* نهاية تنسيقات الاستجابة للشاشات */
+/* -------------------------------------------- */
+/* --- نهاية ملف CSS --- */
+/* -------------------------------------------- */
